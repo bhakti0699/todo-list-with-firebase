@@ -8,8 +8,20 @@ import { toggleChecked } from '../../actions/taskActions';
 import {connect} from 'react-redux';
 import Check from './Check';
 
-const Task = ({task,removeTask,toggleChecked}) =>
+const Task = ({task,removeTask,toggleChecked,filter}) =>
 {
+    if(filter==="Pending")
+    {
+        alert("pending");
+    }
+    else if(filter==="Completed")
+    {
+        alert("complete");
+    }
+    else
+    {
+        alert("all");
+    }
     const handleRemove = task =>
     {
         removeTask(task);

@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import {addTask} from '../../actions/taskActions';
+import {toast} from 'react-toastify';
 
 class AddTask extends Component
 {
@@ -17,10 +18,21 @@ class AddTask extends Component
     }
     handleSubmit = (e) =>
     {
+        if(this.state.task!=="")
+        {
         e.preventDefault();
         this.props.addTask(this.state);
         document.getElementById("addTaskForm").reset();
+        this.setState({
+            task:'',
+        })
         console.log(this.state);
+        }
+        else
+        {
+            e.preventDefault();
+            toast.error("task is empty");
+        }
     }
     render()
     {
